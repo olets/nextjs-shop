@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import Link from 'next/link'
 
-const links = [
+const headerLinks = [
   {
     href: '/',
     text: 'Home',
@@ -21,10 +21,10 @@ const Header = () => {
     <header className="p-4 w-full">
       <nav>
         <ul className="flex justify-between">
-          {links.map((link, index) => (
-            <li key={link.href} className={cx({ 'flex-1': index === 0 })}>
-              <Link href={link.href}>
-                <a className="border-b-2 border-current hover:text-link inline-block m-2 transition-colors">{link.text}</a>
+          {headerLinks.map(({ href, text }, index) => (
+            <li key={href} className={cx({ 'flex-1': index === 0 })}>
+              <Link href={href}>
+                <a className="border-b-2 border-current hover:text-link inline-block m-2 transition-colors">{text}</a>
               </Link>
             </li>
           ))}
