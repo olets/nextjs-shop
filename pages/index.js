@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Header from '../components/Header'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header></Header>
 
       <main className="flex-1 p-10 text-center">
         <h1 className="text-2xl font-bold">
