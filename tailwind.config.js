@@ -6,7 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        current: 'currentColor'
+        current: 'currentColor',
+        link: colors.blue['600'],
+      },
+      transitionDuration: {
+        DEFAULT: '500ms',
       }
     },
   },
