@@ -1,10 +1,10 @@
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
 import { Provider } from 'react-redux'
 import store from '../redux/store'
 import 'tailwindcss/tailwind.css'
 
-let persistor = persistStore(store);
+let persistor = persistStore(store)
 
 function MyApp({ Component, pageProps }) {
   return (
