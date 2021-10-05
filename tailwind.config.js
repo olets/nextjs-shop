@@ -8,10 +8,14 @@ module.exports = {
       colors: {
         current: 'currentColor',
         link: colors.blue['600'],
+        'link-hover': colors.blue['800'],
       },
       transitionDuration: {
         DEFAULT: '500ms',
-      }
+      },
+      transitionProperty: {
+        color: 'color',
+      },
     },
   },
   variants: {
