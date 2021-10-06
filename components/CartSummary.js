@@ -9,7 +9,7 @@ import {
 } from '../redux/cart.slice'
 import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
 
-const CartSummary = ({ cart, totalPrice }) => {
+const CartSummary = ({ cart, itemTotalValue }) => {
   const dispatch = useDispatch()
 
   return (
@@ -59,7 +59,7 @@ const CartSummary = ({ cart, totalPrice }) => {
           ))}
         </tbody>
       </table>
-      <h2 className="my-5">Grand Total: {CurrencyFormatter.format(totalPrice)}</h2>
+      <h2 className="my-5">Grand Total: {CurrencyFormatter.format(itemTotalValue)}</h2>
     </>
   )
 }
