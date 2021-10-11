@@ -30,7 +30,7 @@ export default function Layout({ children, title = siteTitle }) {
       </main>
 
       <footer className="border-t p-8 w-full">
-        by @olets from the guide at https://blog.logrocket.com/building-a-next-js-shopping-cart-app/
+        by @olets
       </footer>
     </div>
   )
