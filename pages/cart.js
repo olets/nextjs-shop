@@ -125,9 +125,15 @@ const CartPage = () => {
             <tbody>
               {cart.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.name}</td>
                   <td>
-                    <Image src={item.imageSrc} height="90" width="65" alt=""/>
+                    <Link href={`/product/${item.name}`}>
+                      <a>{item.name}</a>
+                    </Link>
+                  </td>
+                  <td>
+                    <Link href={`/product/${item.name}`}>
+                      <a><Image src={item.imageSrc} height="90" width="65" alt=""/></a>
+                    </Link>
                   </td>
                   <td>{CurrencyFormatter.format(item.price)}</td>
                   <td>{item.quantity}</td>
