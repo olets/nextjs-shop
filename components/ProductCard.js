@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cart.slice'
 import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
 
-const ProductCard = ({ product, showCategory }) => {
+const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const {categories} = product
 

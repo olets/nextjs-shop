@@ -7,7 +7,7 @@ const CategoryPage = ({ products }) => {
   const router = useRouter()
   return (
     <Layout title={`Results for ${router.query.category}`}>
-      <ProductList products={products} showCategory={true} />
+      <ProductList products={products} />
     </Layout>
   )
 }
