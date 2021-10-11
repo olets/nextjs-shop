@@ -1,10 +1,10 @@
 import CategoryCard from './CategoryCard'
 
-const CategoryList = ({ data }) => (
+const CategoryList = ({ categories }) => (
   <ul className="grid grid-cols-3 gap-5">
-    {data.map((datum, index) => (
+    {categories.map((category, index) => (
       <li key={index}>
-        <CategoryCard data={datum} />
+        <CategoryCard category={category} />
       </li>
     ))}
   </ul>

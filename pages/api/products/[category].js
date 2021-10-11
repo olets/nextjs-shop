@@ -5,11 +5,6 @@ export function getProductsByCategory(category) {
   return products
 }
 
-export function getCategoryThumbnail(category) {
-  const thumbnail = getProductsByCategory(category)[0].image
-  return thumbnail
-}
-
 export default function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', ['GET'])
