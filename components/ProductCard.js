@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cart.slice'
 import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, hideCategory }) => {
   const dispatch = useDispatch();
 
   return (
@@ -20,12 +20,18 @@ const ProductCard = ({ product }) => {
       <h4 className="font-bold mt-4">{product.name}</h4>
 
       <dl>
-        <dt>Category: </dt>
-        <dd>
-          <Link href={`/category/${product.category}`}>
-            <a>{product.category}</a>
-          </Link>
-        </dd>
+        {
+          hideCategory ? '' : (
+            <>
+              <dt>Category: </dt>
+              <dd>
+                <Link href={`/category/${product.category}`}>
+                  <a>{product.category}</a>
+                </Link>
+              </dd>
+            </>
+          )
+        }
         <dt>Price:</dt>
         <dd>{CurrencyFormatter.format(product.price)}</dd>
       </dl>
