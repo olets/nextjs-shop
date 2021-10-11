@@ -17,5 +17,13 @@ export default CategoryPage
 export async function getServerSideProps(ctx) {
   const category = ctx.query.category
   const products = await getProductsByCategory(category)
+
+  // TODO should this be something else?
+  if (!products.length) {
+    return {
+      notFound: true,
+    }
+  }
+
   return { props: { products } }
 }
