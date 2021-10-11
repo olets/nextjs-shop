@@ -132,7 +132,7 @@ const CartPage = () => {
                   </td>
                   <td>
                     <Link href={`/product/${item.name}`}>
-                      <a><Image src={item.imageSrc} height="90" width="65" alt=""/></a>
+                      <a><Image src={item.image} height="48" width="64" alt=""/></a>
                     </Link>
                   </td>
                   <td>{CurrencyFormatter.format(item.price)}</td>
@@ -140,19 +140,19 @@ const CartPage = () => {
                   <td>{CurrencyFormatter.format(item.quantity * item.price)}</td>
                   <td className="space-x-3">
                     <button 
-                      onClick={() => dispatch(incrementQuantity(item.id))}
+                      onClick={() => dispatch(incrementQuantity(item.upc))}
                       className="border border-green-700 hover:bg-green-700 hover:text-white w-8 h-8 align-center transition-colors"
                     >
                       &#43;
                     </button>
                     <button 
-                      onClick={() => dispatch(decrementQuantity(item.id))}
+                      onClick={() => dispatch(decrementQuantity(item.upc))}
                       className="border border-yellow-600 hover:bg-yellow-600 hover:text-white w-8 h-8 align-center transition-colors"
                     >
                       &minus;
                     </button>
                     <button 
-                      onClick={() => dispatch(removeFromCart(item.id))}
+                      onClick={() => dispatch(removeFromCart(item.upc))}
                       className="border border-red-700 hover:bg-red-700 hover:text-white w-8 h-8 align-center transition-colors"
                     >
                       &times;

@@ -5,7 +5,7 @@ const cartSlice = createSlice({
   initialState: [],
   reducers: {
     addToCart: (state, action) => {
-      const itemExists = state.find((item) => item.id === action.payload.id)
+      const itemExists = state.find((item) => item.upc === action.payload.upc)
       if (itemExists) {
         itemExists.quantity++
       } else {
@@ -13,20 +13,20 @@ const cartSlice = createSlice({
       }
     },
     incrementQuantity: (state, action) => {
-      const item = state.find((item) => item.id === action.payload)
+      const item = state.find((item) => item.upc === action.payload)
       item.quantity++
     },
     decrementQuantity: (state, action) => {
-      const item = state.find((item) => item.id === action.payload)
+      const item = state.find((item) => item.upc === action.payload)
       if (item.quantity === 1) {
-        const index = state.findIndex((item) => item.id === action.payload)
+        const index = state.findIndex((item) => item.upc === action.payload)
         state.splice(index, 1)
       } else {
         item.quantity--
       }
     },
     removeFromCart: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload)
+      const index = state.findIndex((item) => item.upc === action.payload)
       state.splice(index, 1)
     },
   },

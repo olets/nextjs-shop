@@ -1,13 +1,13 @@
 import CategoryCard from './CategoryCard'
 
-const ProductList = ({ categories }) => (
+const CategoryList = ({ data }) => (
   <ul className="grid grid-cols-3 gap-5">
-    {categories.map(({ imageSrc, category }, index) => (
+    {data.map((datum, index) => (
       <li key={index}>
-        <CategoryCard imageSrc={imageSrc} category={category} />
+        <CategoryCard data={datum} />
       </li>
     ))}
   </ul>
 )
 
-export default ProductList
+export default CategoryList

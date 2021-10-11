@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Titlecase from '../utilities/Titlecase'
+import { getCategoryThumbnail } from '../pages/api/products/[category]'
 
 const LINK_TEXT = 'See All'
 
-const CategoryCard = ({ imageSrc, category }) => {
+const CategoryCard = ({ data }) => {
+  const { category, image } = data
   return (
     <div className="group hover:text-link relative transition-colors">
-      <Image className="object-cover border group-hover:scale-125 transition-transform" src={imageSrc} height={700} width={1300} alt="" />
+      <Image className="object-cover border group-hover:scale-125 transition-transform" src={image} height={700} width={1300} alt="" />
 
       <h3>{Titlecase(category)}</h3>
       <p aria-hidden="true" className="uppercase">{LINK_TEXT}</p>

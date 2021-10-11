@@ -1,8 +1,13 @@
 import data from '../../../data/products.json'
 
 export function getProductsByCategory(category) {
-  const products = data.filter((p) => p.category === category)
+  const products = data.filter(({categories}) => categories.indexOf(category) >= 0)
   return products
+}
+
+export function getCategoryThumbnail(category) {
+  const thumbnail = getProductsByCategory(category)[0].image
+  return thumbnail
 }
 
 export default function handler(req, res) {
