@@ -7,25 +7,30 @@ import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const {categories} = product
+  const {
+    categories,
+    image,
+    name,
+    price
+  } = product
 
   return (
     <div className="group shadow relative pb-4 space-y-4">
       <Image
         className="group-hover:scale-125 transition-transform object-fill"
-        src={product.image}
+        src={image}
         width={320}
         height={240}
       />
 
-      <h4 className="font-bold mt-4">{product.name}</h4>
+      <h4 className="font-bold mt-4">{name}</h4>
 
       <dl>
         <dt>Categories: </dt>
         <dd className="mb-8">
           <ul className="list-disc w-1/2 mx-auto">
             {
-              product.categories.sort((a, b) => a.localeCompare(b)).map((c, index) => (
+              categories.sort((a, b) => a.localeCompare(b)).map((c, index) => (
                 <li key={index}>
                   <Link href={`/category/${c}`}>
                     <a>{c}</a>
@@ -37,10 +42,10 @@ const ProductCard = ({ product }) => {
         </dd>
         
         <dt>Price:</dt>
-        <dd className="mb-8">{CurrencyFormatter.format(product.price)}</dd>
+        <dd className="mb-8">{CurrencyFormatter.format(price)}</dd>
       </dl>
 
-      <Link href={`/product/${product.name}`}>
+      <Link href={`/product/${name}`}>
         <a className="block">
           See details
         </a>
