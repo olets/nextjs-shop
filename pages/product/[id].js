@@ -19,5 +19,12 @@ export default ProductPage
 export async function getServerSideProps(ctx) {
   const id = ctx.query.id
   const product = await getProductById(id)
+
+  if (!product) {
+    return {
+      notFound: true,
+    }
+  }
+
   return { props: { product } }
 }
