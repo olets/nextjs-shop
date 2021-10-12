@@ -163,10 +163,10 @@ const CartPage = () => {
             </tbody>
           </table>
 
-          <div>Subtotal: {itemTotalValue}</div>
-          <div>Shipping: {shippingValue}</div>
-          <div>Tax: {taxTotalValue}</div>
-          <div>Total: {grandTotalValue}</div>
+          <div>Subtotal: {CurrencyFormatter.format(itemTotalValue)}</div>
+          <div>Shipping: {CurrencyFormatter.format(shippingValue)}</div>
+          <div>Tax: {CurrencyFormatter.format(taxTotalValue)}</div>
+          <div>Total: {CurrencyFormatter.format(grandTotalValue)}</div>
 
           <Link href="/shop">
             <a className="border-b border-current hover:text-link-hover text-link transition-color">Continue Shopping</a>
