@@ -139,6 +139,21 @@ const CartPage = () => {
                   <td>{item.quantity}</td>
                   <td>{CurrencyFormatter.format(item.quantity * item.price)}</td>
                   <td className="space-x-3">
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) => {
+                        const { value } = e.target
+                        
+                        if (value === 0) {
+                          dispatch(removeFromCart(item.upc))
+                        } else if (value > item.quantity) {
+                          dispatch(incrementQuantity(item.upc))
+                        } else {
+                          dispatch(decrementQuantity(item.upc))
+                        }
+                      }}
+                    />
                     <button 
                       onClick={() => dispatch(incrementQuantity(item.upc))}
                       className="border border-green-700 hover:bg-green-700 hover:text-white w-8 h-8 align-center transition-colors"
