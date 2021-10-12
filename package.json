@@ -17,6 +17,18 @@
     "redux-persist": "^6.0.0",
     "tailwindcss": "^3.0.0-alpha.1"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {},
+  "name": "nextjs-store",
+  "description": "A starter Next.js React e-commerce site.",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "keywords": [
+    "nextjs",
+    "redux",
+    "ecommerce",
+    "store",
+    "cart"
+  ],
+  "author": "Henry Bley-Vroman",
+  "license": "SEE LICENSE IN LICENSE"
 }
