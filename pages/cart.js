@@ -3,13 +3,12 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart,
-} from '../redux/cart.slice'
+import { useSelector } from 'react-redux'
 import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
+import UpdateItemQuantityInput from '../components/UpdateItemQuantityInput'
+import IncrementItemQuantityButton from '../components/IncrementItemQuantityButton'
+import DecrementItemQuantityButton from '../components/DecrementItemQuantityButton'
+import RemoveItemFromCartButton from '../components/RemoveItemFromCartButton'
 
 const ALLOWED_COUNTRY_CODES = ['US']
 
@@ -21,7 +20,6 @@ const PAYPAL_OPTIONS = {
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
 
   const [state, setState] = useState({
     orderID: null,
@@ -139,39 +137,10 @@ const CartPage = () => {
                   <td>{item.quantity}</td>
                   <td>{CurrencyFormatter.format(item.quantity * item.price)}</td>
                   <td className="space-x-3">
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) => {
-                        const { value } = e.target
-                        
-                        if (value === 0) {
-                          dispatch(removeFromCart(item.upc))
-                        } else if (value > item.quantity) {
-                          dispatch(incrementQuantity(item.upc))
-                        } else {
-                          dispatch(decrementQuantity(item.upc))
-                        }
-                      }}
-                    />
-                    <button 
-                      onClick={() => dispatch(incrementQuantity(item.upc))}
-                      className="border border-green-700 hover:bg-green-700 hover:text-white w-8 h-8 align-center transition-colors"
-                    >
-                      &#43;
-                    </button>
-                    <button 
-                      onClick={() => dispatch(decrementQuantity(item.upc))}
-                      className="border border-yellow-600 hover:bg-yellow-600 hover:text-white w-8 h-8 align-center transition-colors"
-                    >
-                      &minus;
-                    </button>
-                    <button 
-                      onClick={() => dispatch(removeFromCart(item.upc))}
-                      className="border border-red-700 hover:bg-red-700 hover:text-white w-8 h-8 align-center transition-colors"
-                    >
-                      &times;
-                    </button>
+                    <UpdateItemQuantityInput item={item}></UpdateItemQuantityInput>
+                    <IncrementItemQuantityButton item={item}></IncrementItemQuantityButton>
+                    <DecrementItemQuantityButton item={item}></DecrementItemQuantityButton>
+                    <RemoveItemFromCartButton item={item}></RemoveItemFromCartButton>
                   </td>
                 </tr>
               ))}
