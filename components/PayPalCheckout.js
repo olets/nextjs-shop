@@ -66,6 +66,8 @@ const PayPalCheckout = ({}) => {
       .then((orderID) => {
         setState({
           ...state,
+          approveMessage: '',
+          errorMessage: '',
           orderID: orderID,
         })
         return orderID
