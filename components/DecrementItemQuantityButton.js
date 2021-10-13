@@ -8,7 +8,7 @@ const DecrementItemQuantityButton = ({ item }) => {
   
   return (
     <button 
-      onClick={() => dispatch(decrementQuantity(item.upc))}
+      onClick={() => dispatch(decrementQuantity(item.id))}
       className="border border-yellow-600 hover:bg-yellow-600 hover:text-white w-8 h-8 align-center transition-colors"
     >
       &minus;

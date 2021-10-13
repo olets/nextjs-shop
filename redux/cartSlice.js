@@ -2,32 +2,67 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: [],
+  initialState: {
+    approveMessage: '',
+    errorMessage: '',
+    items: [],
+    orderID: null,
+  },
   reducers: {
     addToCart: (state, action) => {
-      const itemExists = state.find((item) => item.upc === action.payload.upc)
-      if (itemExists) {
-        itemExists.quantity++
-      } else {
-        state.push({ ...action.payload, quantity: 1 })
+      const itemInCart = state.items.find(({ id }) => id === action.payload.id)
+
+
+      if (!itemInCart) {
+        state.items.push({ ...action.payload, quantity: 1 })
+        return
       }
+
+      itemInCart.quantity++
     },
     incrementQuantity: (state, action) => {
-      const item = state.find((item) => item.id === action.payload)
-      item.quantity++
+      const itemInCart = state.items.find(({ id }) => id === action.payload)
+
+      if (!itemInCart) {
+        return
+      }
+
+      itemInCart.quantity++
     },
     decrementQuantity: (state, action) => {
-      const item = state.find((item) => item.id === action.payload)
-      if (item.quantity === 1) {
-        const index = state.findIndex((item) => item.id === action.payload)
-        state.splice(index, 1)
+      const itemInCart = state.items.find(({ id }) => id === action.payload)
+
+      if (!itemInCart) {
+        return
+      }
+
+      if (itemInCart.quantity === 1) {
+        const index = state.items.indexOf(itemInCart)
+
+        state.items.splice(index, 1)
       } else {
-        item.quantity--
+        itemInCart.quantity--
       }
     },
     removeFromCart: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload)
-      state.splice(index, 1)
+      const itemInCart = state.items.find(({ id }) => id === action.payload)
+
+      if (!itemInCart) {
+        return
+      }
+
+      const index = state.items.indexOf(itemInCart)
+
+      state.items.splice(index, 1)
+    },
+    updateApproveMessage: (state, action) => {
+      state.approveMessage = action.payload
+    },
+    updateErrorMessage: (state, action) => {
+      state.errorMessage = action.payload
+    },
+    updateOrderID: (state, action) => {
+      state.orderID = action.payload
     },
   },
 })
@@ -41,4 +76,7 @@ export const {
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
+  updateApproveMessage,
+  updateErrorMessage,
+  updateOrderID,
 } = actions

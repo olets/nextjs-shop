@@ -8,7 +8,7 @@ const RemoveItemFromCartButton = ({ item }) => {
   
   return (
     <button 
-      onClick={() => dispatch(removeFromCart(item.upc))}
+      onClick={() => dispatch(removeFromCart(item.id))}
       className="border border-red-700 hover:bg-red-700 hover:text-white w-8 h-8 align-center transition-colors"
     >
       &times;

@@ -5,10 +5,11 @@ import { useRouter } from 'next/router'
 
 const Header = () => {
   const router = useRouter()
-  const cart = useSelector((state) => state.cart)
+  const { items } = useSelector((state) => state.cart)
 
+  // TODO make an item counter component and use a new selector to get the count
   const getItemsCount = () => {
-    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+    return items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   }
 
   const headerLinks = [

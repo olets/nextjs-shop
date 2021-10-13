@@ -1,6 +1,11 @@
-import { useState } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  updateApproveMessage,
+  updateErrorMessage,
+  updateOrderID,
+} from '../redux/cartSlice'
+import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
 
 const ALLOWED_COUNTRY_CODES = ['US']
 const PAYPAL_OPTIONS = {
@@ -10,84 +15,72 @@ const PAYPAL_OPTIONS = {
 }
 
 const PayPalCheckout = ({}) => {
+  const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
 
-  const [state, setState] = useState({
-    orderID: null,
-    approveMessage: "",
-    errorMessage: "",
-  })
-
   // TODO use Redux selectors for itemTotalValue, shippingValue, taxTotalValue, grandTotalValue
+    const itemTotalValue = cart.items.reduce((accumulator, item) => {
+      return accumulator + item.quantity * item.price
+    }, 0)
 
-  const itemTotalValue = cart.reduce((accumulator, item) => {
-    return accumulator + item.quantity * item.price
-  }, 0)
+    const shippingValue = 10 // @TODO
 
-  const shippingValue = 10 // @TODO
+    const taxTotalValue = 20 // @TODO
 
-  const taxTotalValue = 20 // @TODO
-
-  const grandTotalValue = itemTotalValue + shippingValue + taxTotalValue
+    const grandTotalValue = itemTotalValue + shippingValue + taxTotalValue
 
   const createOrder = (data, actions) => {
-    return actions.order
-      .create({
-        purchase_units: [{
-          description: 'the description',
-          amount: {
-            currency_code: 'USD',
-            value: grandTotalValue,
-            breakdown: {
-              item_total: {
-                currency_code: 'USD',
-                value: itemTotalValue,
-              },
-              shipping: {
-                currency_code: 'USD',
-                value: shippingValue,
-              },
-              tax_total: {
-                currency_code: 'USD',
-                value: taxTotalValue,
-              }
-            }
-          },
-          items: cart.map(m => ({
-            name: m.name,
-            unit_amount: {
+    const order = {
+      purchase_units: [{
+        description: 'the description',
+        amount: {
+          currency_code: 'USD',
+          value: CurrencyFormatter.format(grandTotalValue).replace(/^\$/, '').replace(',', ''),
+          breakdown: {
+            item_total: {
               currency_code: 'USD',
-              value: m.price,
+              value: CurrencyFormatter.format(itemTotalValue).replace(/^\$/, '').replace(',', ''),
             },
-            quantity: m.quantity,
-          }))
-        }]
-      })
+            shipping: {
+              currency_code: 'USD',
+              value: CurrencyFormatter.format(shippingValue).replace(/^\$/, '').replace(',', ''),
+            },
+            tax_total: {
+              currency_code: 'USD',
+              value: CurrencyFormatter.format(taxTotalValue).replace(/^\$/, '').replace(',', ''),
+            }
+          }
+        },
+        items: cart.items.map(m => ({
+          name: m.name,
+          unit_amount: {
+            currency_code: 'USD',
+            value: m.price,
+          },
+          quantity: m.quantity,
+        }))
+      }]
+    }
+    console.log(order)
+    return actions.order
+      .create(order)
       .then((orderID) => {
-        setState({
-          ...state,
-          approveMessage: '',
-          errorMessage: '',
-          orderID: orderID,
-        })
+        dispatch(updateApproveMessage(''))
+        dispatch(updateErrorMessage(''))
+        dispatch(updateOrderID(orderID))
+
         return orderID
       })
   }
 
   const onApprove = (data, actions) => {
     return actions.order.capture().then((details) => {
-      setState({
-        ...state,
-        approveMessage: `Transaction completed!`
-      })
+      dispatch(updateApproveMessage('Transaction completed!'))
     })
   }
 
   const onError = (err) => {
-    setState({
-      ...state,
-      errorMessage: err.toString()
-    })
+    dispatch(updateErrorMessage(err.toString()))
   }
 
   const onShippingChange = (data, actions) => {
@@ -103,19 +96,19 @@ const PayPalCheckout = ({}) => {
       <section>
         <dl>
           <dt>Order ID:</dt>
-          <dd>{state.orderID}</dd>
+          <dd>{cart.orderID}</dd>
 
           <dt>On Approve Message: </dt>
-          <dd>{state.approveMessage}</dd>
+          <dd>{cart.approveMessage}</dd>
 
           <dt>On Error Message: </dt>
-          <dd>{state.errorMessage}</dd>
+          <dd>{cart.errorMessage}</dd>
         </dl>
       </section>
 
       <PayPalButtons
         createOrder={createOrder}
-        forceReRender={[cart]}
+        forceReRender={[cart.items]}
         onApprove={onApprove}
         onError={onError}
         onShippingChange={onShippingChange}

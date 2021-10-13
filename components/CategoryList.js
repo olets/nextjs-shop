@@ -11,3 +11,14 @@ const CategoryList = ({ categories }) => (
 )
 
 export default CategoryList
+
+  // export default connect(CategoryList)
+// const mapState = (state, ownProps) => {
+//   const item = selectItemForThisComponent(state, ownProps.itemId);
+
+//   return {item};
+// }
+
+// const SomeComponent = (props) => <div>Name: {props.item.name}</div>;
+
+// export default connect(mapState)(SomeComponent);

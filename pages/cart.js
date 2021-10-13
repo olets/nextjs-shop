@@ -10,23 +10,22 @@ import RemoveItemFromCartButton from '../components/RemoveItemFromCartButton'
 import PayPalCheckout from '../components/PayPalCheckout'
 
 const CartPage = () => {
-  const cart = useSelector((state) => state.cart)
+  const { items } = useSelector((state) => state.cart)
 
   // TODO use Redux selectors for itemTotalValue, shippingValue, taxTotalValue, grandTotalValue
+    const itemTotalValue = items.reduce((accumulator, item) => {
+      return accumulator + item.quantity * item.price
+    }, 0)
 
-  const itemTotalValue = cart.reduce((accumulator, item) => {
-    return accumulator + item.quantity * item.price
-  }, 0)
+    const shippingValue = 10 // @TODO
 
-  const shippingValue = 10 // @TODO
+    const taxTotalValue = 20 // @TODO
 
-  const taxTotalValue = 20 // @TODO
-
-  const grandTotalValue = itemTotalValue + shippingValue + taxTotalValue
+    const grandTotalValue = itemTotalValue + shippingValue + taxTotalValue
 
   return (
     <Layout title="Cart">
-      {cart.length === 0 ? (
+      {items.length === 0 ? (
         <h1>Your Cart is Empty!</h1>
       ) : (
         <>
@@ -42,7 +41,7 @@ const CartPage = () => {
               </tr>
             </thead>
             <tbody>
-              {cart.map((item, index) => (
+              {items.map((item, index) => (
                 <tr key={index}>
                   <td>
                     <Link href={`/product/${item.name}`}>

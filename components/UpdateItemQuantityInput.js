@@ -17,11 +17,11 @@ const UpdateItemQuantityInput = ({ item }) => {
 
         if (value === 0) {
           // TODO would be nice to warn
-          dispatch(removeFromCart(item.upc))
+          dispatch(removeFromCart(item.id))
         } else if (value > item.quantity) {
-          dispatch(incrementQuantity(item.upc))
+          dispatch(incrementQuantity(item.id))
         } else {
-          dispatch(decrementQuantity(item.upc))
+          dispatch(decrementQuantity(item.id))
         }
       }}
     />

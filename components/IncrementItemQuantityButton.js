@@ -8,7 +8,7 @@ const IncrementItemQuantityButton = ({ item }) => {
   
   return (
     <button 
-      onClick={() => dispatch(incrementQuantity(item.upc))}
+      onClick={() => dispatch(incrementQuantity(item.id))}
       className="border border-green-700 hover:bg-green-700 hover:text-white w-8 h-8 align-center transition-colors"
     >
       &#43;
