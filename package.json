@@ -8,14 +8,16 @@
   "dependencies": {
     "@paypal/react-paypal-js": "^7.4.1",
     "@reduxjs/toolkit": "^1.6.1",
-    "autoprefixer": "^10.3.6",
-    "classnames": "^2.2.6",
     "next": "latest",
-    "postcss": "^8.3.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
-    "redux-persist": "^6.0.0",
+    "redux-persist": "^6.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.6",
+    "classnames": "^2.2.6",
+    "postcss": "^8.3.8",
     "tailwindcss": "^3.0.0-alpha.1"
   },
   "name": "nextjs-store",
