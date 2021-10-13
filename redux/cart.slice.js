@@ -32,11 +32,13 @@ const cartSlice = createSlice({
   },
 })
 
-export const cartReducer = cartSlice.reducer
+const { actions, reducer } = cartSlice
+
+export const cartReducer = reducer
 
 export const {
   addToCart,
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
-} = cartSlice.actions
+} = actions

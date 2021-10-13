@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../redux/cart.slice'
+import { addToCart } from '../redux/cartSlice'
 import { CurrencyFormatter } from '../utilities/CurrencyFormatter'
 
 const ProductCard = ({ product }) => {
