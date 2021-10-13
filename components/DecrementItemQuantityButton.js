@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import {
   decrementQuantity,
-} from '../redux/cart.slice'
+} from '../redux/cartSlice'
 
 const DecrementItemQuantityButton = ({ item }) => {
   const dispatch = useDispatch()

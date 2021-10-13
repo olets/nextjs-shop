@@ -3,7 +3,7 @@ import {
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
-} from '../redux/cart.slice'
+} from '../redux/cartSlice'
 
 const UpdateItemQuantityInput = ({ item }) => {
   const dispatch = useDispatch()

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import {
   removeFromCart,
-} from '../redux/cart.slice'
+} from '../redux/cartSlice'
 
 const RemoveItemFromCartButton = ({ item }) => {
   const dispatch = useDispatch()
