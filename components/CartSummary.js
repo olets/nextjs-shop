@@ -30,7 +30,10 @@ const CartSummary = ({}) => {
             <th className="p-4">Price</th>
             <th className="p-4">Quantity</th>
             <th className="p-4">Total Price</th>
-            <th className="p-4">Actions</th>
+            <th className="p-4">Quantity Input</th>
+            <th className="p-4">Increment</th>
+            <th className="p-4">Decrement</th>
+            <th className="p-4">Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -54,12 +57,18 @@ const CartSummary = ({}) => {
                 </Link>
               </td>
               <td>{numberToUSDString(item.price)}</td>
-              <td>{item.quantity}</td>
               <td>{numberToUSDString(item.quantity * item.price)}</td>
-              <td className="space-x-3">
+              <td>{item.quantity}</td>
+              <td>
                 <UpdateItemQuantityInput item={item}></UpdateItemQuantityInput>
+              </td>
+              <td>
                 <IncrementItemQuantityButton item={item}></IncrementItemQuantityButton>
+              </td>
+              <td>
                 <DecrementItemQuantityButton item={item}></DecrementItemQuantityButton>
+              </td>
+              <td>
                 <RemoveItemFromCartButton item={item}></RemoveItemFromCartButton>
               </td>
             </tr>

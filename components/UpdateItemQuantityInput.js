@@ -10,6 +10,7 @@ const UpdateItemQuantityInput = ({ item }) => {
   
   return (
     <input
+      className="border border-gray-400 rounded-sm px-4 py-2 w-20"
       type="number"
       value={item.quantity}
       onChange={(e) => {
