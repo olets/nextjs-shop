@@ -1,6 +1,10 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 import { useDispatch, useSelector } from 'react-redux'
 import {
+  selectAmountValue,
+  selectItemTotalValue,
+  selectShippingValue,
+  selectTaxTotalValue,
   updateApproveMessage,
   updateErrorMessage,
   updateOrderID,
@@ -18,24 +22,18 @@ const PayPalCheckout = ({}) => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
 
-  // TODO use Redux selectors for itemTotalValue, shippingValue, taxTotalValue, grandTotalValue
-    const itemTotalValue = cart.items.reduce((accumulator, item) => {
-      return accumulator + item.quantity * item.price
-    }, 0)
-
-    const shippingValue = 10 // @TODO
-
-    const taxTotalValue = 20 // @TODO
-
-    const grandTotalValue = itemTotalValue + shippingValue + taxTotalValue
-
   const createOrder = (data, actions) => {
+    const amountValue = selectAmountValue(cart)
+    const itemTotalValue = selectItemTotalValue(cart)
+    const shippingValue = selectShippingValue(cart)
+    const taxTotalValue = selectTaxTotalValue(cart)
+
     const order = {
       purchase_units: [{
         description: 'the description',
         amount: {
           currency_code: 'USD',
-          value: numberToUSDNumber(grandTotalValue),
+          value: numberToUSDNumber(amountValue),
           breakdown: {
             item_total: {
               currency_code: 'USD',
@@ -61,7 +59,7 @@ const PayPalCheckout = ({}) => {
         }))
       }]
     }
-    console.log(order)
+    
     return actions.order
       .create(order)
       .then((orderID) => {

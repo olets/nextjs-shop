@@ -1,13 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
+
+const INITIAL_STATE = {
+  approveMessage: '',
+  errorMessage: '',
+  items: [],
+  orderID: null,
+  shippingValue: 10,
+  taxTotalValue: 20,
+}
+
+export const selectItems = (state) => state.items
+export const selectShippingValue = (state) => state.shippingValue
+export const selectTaxTotalValue = (state) => state.taxTotalValue
+
+export const selectItemTotalValue = createSelector(
+  [selectItems],
+  (items) => items.reduce((acc, item) => {
+    return acc + item.quantity * item.price
+  }, 0)
+)
+
+export const selectAmountValue = createSelector(
+  [selectItemTotalValue, selectShippingValue, selectTaxTotalValue],
+  (itemTotalValue, shippingValue, taxTotalValue) => {
+    return itemTotalValue + shippingValue + taxTotalValue
+  }
+)
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: {
-    approveMessage: '',
-    errorMessage: '',
-    items: [],
-    orderID: null,
-  },
+  initialState: INITIAL_STATE,
   reducers: {
     addToCart: (state, action) => {
       const itemInCart = state.items.find(({ id }) => id === action.payload.id)
