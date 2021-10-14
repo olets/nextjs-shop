@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Titlecase from '../utilities/Titlecase'
 
-const LINK_TEXT = 'See All'
+const LINK_TEXT = 'See Products'
 
 const CategoryCard = ({ category }) => {
   const { name, image } = category
