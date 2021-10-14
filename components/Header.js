@@ -37,7 +37,7 @@ const Header = () => {
       <nav>
         <ul className="flex justify-between">
           {headerLinks.map(({ href, text, underlineCurrent }, index) => (
-            <li key={href} className={cx({ 'flex-1': index === 0 })}>
+            <li key={index} className={cx({ 'flex-1': index === 0 })}>
               <Link href={href}>
                 <a className={ cx('border-current hover:text-link inline-block m-2 transition-colors', {
                   'border-b-2': router.asPath === href && underlineCurrent,

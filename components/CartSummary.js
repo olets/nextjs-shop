@@ -40,7 +40,7 @@ const CartSummary = ({}) => {
             <tr key={index}>
               <td>
                 <Link href={`/product/${item.name}`}>
-                  <a>{item.name}</a>
+                  <a className="focus:text-link-hover hover:text-link-hover text-link underline">{item.name}</a>
                 </Link>
               </td>
               <td>
