@@ -1,15 +1,11 @@
-import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
-import ProductCard from '../../components/ProductCard'
-// import ProductList from '../../components/ProductList'
+import ProductDetailCard from '../../components/ProductDetailCard'
 import { getProductById } from '../api/product/[id]'
 
 const ProductPage = ({ product }) => {
-  // const router = useRouter()
-
   return (
     <Layout title={`${product.name}`}>
-      <ProductCard product={product}></ProductCard>
+      <ProductDetailCard product={product}></ProductDetailCard>
     </Layout>
   )
 }

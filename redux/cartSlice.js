@@ -10,8 +10,16 @@ const INITIAL_STATE = {
 }
 
 export const selectItems = (state) => state.items
+
+// TODO shipping should be calculated
 export const selectShippingValue = (state) => state.shippingValue
-export const selectTaxTotalValue = (state) => state.taxTotalValue
+
+export const selectTaxTotalValue = createSelector(
+  [selectItems],
+  (items) => items.reduce((acc, cur) => {
+    return acc + cur.quantity * cur.taxes
+  }, 0)
+)
 
 export const selectTotalQuantity = createSelector(
   [selectItems],

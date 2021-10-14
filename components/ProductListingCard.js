@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
 import { numberToUSDString } from '../utilities/currency'
 
-const ProductCard = ({ product }) => {
+const ProductListingCard = ({ product }) => {
   const dispatch = useDispatch();
   const {
     categories,
     image,
     name,
-    price
+    price,
   } = product
 
   return (
@@ -61,4 +61,4 @@ const ProductCard = ({ product }) => {
   )
 }
 
-export default ProductCard
+export default ProductListingCard
