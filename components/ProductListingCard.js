@@ -53,7 +53,7 @@ const ProductListingCard = ({ product }) => {
       
       <button
         onClick={() => dispatch(addToCart(product))}
-        className="hover:shadow hover:bg-blue-700 focus:shadow focus:bg-blue-700 transition-colors bg-blue-400 p-8 py-4 text-white rounded"
+        className="bg-blue-600 focus:bg-blue-800 focus:ring-4 focus:shadow hover:bg-blue-800 hover:shadow p-8 py-4 rounded text-white transition-colors"
       >
         Add to Cart
       </button>
