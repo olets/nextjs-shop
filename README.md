@@ -15,11 +15,11 @@ A starter Next.js React e-commerce site.
 
 ## Preview
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/olets/nextjs-shopping-cat)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/olets/nextjs-shop)
 
 ## Deploy your own
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/olets/nextjs-shopping-cat)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/olets/nextjs-shop)
 
 
 ## Links
