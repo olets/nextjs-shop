@@ -2,11 +2,12 @@ import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
 import ProductList from '../../components/ProductList'
 import { getProductsByCategory } from '../api/products/[category]'
+import Titlecase from '../../utilities/Titlecase'
 
 const CategoryPage = ({ products }) => {
   const router = useRouter()
   return (
-    <Layout title={`Results for ${router.query.category}`}>
+    <Layout title={`Category: ${Titlecase(router.query.category)}`}>
       <ProductList products={products} />
     </Layout>
   )

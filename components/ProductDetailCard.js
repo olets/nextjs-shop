@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
 import { numberToUSDString } from '../utilities/currency'
+import Titlecase from '../utilities/Titlecase'
 
 const ProductDetailCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const ProductDetailCard = ({ product }) => {
               categories.sort((a, b) => a.localeCompare(b)).map((c, index) => (
                 <li key={index}>
                   <Link href={`/category/${c}`}>
-                    <a>{c}</a>
+                    <a className="focus:text-link-hover hover:text-link-hover text-link underline">{Titlecase(c)}</a>
                   </Link>
                 </li>
               ))
@@ -51,7 +52,7 @@ const ProductDetailCard = ({ product }) => {
       
       <button
         onClick={() => dispatch(addToCart(product))}
-        className="bg-blue-600 focus:bg-blue-800 focus:ring-4 focus:shadow hover:bg-blue-800 hover:shadow p-8 py-4 rounded text-white transition-colors"
+        className="bg-link focus:bg-link-hover focus:ring-4 focus:shadow hover:bg-link-hover hover:shadow p-8 py-4 rounded text-white transition-colors"
       >
         Add to Cart
       </button>
