@@ -7,3 +7,7 @@ export const numberToUSD = (number) => {
 
   return formatter.format(number)
 }
+
+export const USDtoNumber = (USD) => {
+  return USD.replace(/^\$/, '').replace(',', '')
+}
