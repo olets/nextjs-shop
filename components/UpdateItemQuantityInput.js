@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux'
 import {
-  incrementQuantity,
-  decrementQuantity,
   removeFromCart,
+  setQuantity,
 } from '../redux/cartSlice'
 
 const UpdateItemQuantityInput = ({ item }) => {
@@ -19,11 +18,10 @@ const UpdateItemQuantityInput = ({ item }) => {
         if (value === 0) {
           // TODO would be nice to warn
           dispatch(removeFromCart(item.id))
-        } else if (value > item.quantity) {
-          dispatch(incrementQuantity(item.id))
-        } else {
-          dispatch(decrementQuantity(item.id))
+          return
         }
+
+        dispatch(setQuantity({id: item.id, quantity: value}))
       }}
     />
   )

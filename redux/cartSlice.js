@@ -91,6 +91,15 @@ const cartSlice = createSlice({
 
       state.items.splice(index, 1)
     },
+    setQuantity: (state, action) => {
+      const itemInCart = state.items.find(({ id }) => id === action.payload.id)
+
+      if (!itemInCart) {
+        return
+      }
+
+      itemInCart.quantity = action.payload.quantity
+    },
     updateApproveMessage: (state, action) => {
       state.approveMessage = action.payload
     },
@@ -112,6 +121,7 @@ export const {
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
+  setQuantity,
   updateApproveMessage,
   updateErrorMessage,
   updateOrderID,
