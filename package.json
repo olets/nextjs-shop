@@ -20,17 +20,27 @@
     "postcss": "^8.3.8",
     "tailwindcss": "^3.0.0-alpha.1"
   },
-  "name": "nextjs-store",
+  "name": "nextjs-shop",
   "description": "A starter Next.js React e-commerce site.",
   "version": "1.0.0",
   "main": "next.config.js",
   "keywords": [
+    "cart",
+    "ecomm",
+    "ecommerce",
     "nextjs",
     "redux",
-    "ecommerce",
-    "store",
-    "cart"
+    "shop",
+    "store"
   ],
   "author": "Henry Bley-Vroman",
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olets/nextjs-shop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/olets/nextjs-shop/issues"
+  },
+  "homepage": "https://github.com/olets/nextjs-shop#readme"
 }
