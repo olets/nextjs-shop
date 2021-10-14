@@ -18,9 +18,9 @@ const ProductCard = ({ product }) => {
     <div className="group shadow relative pb-4 space-y-4">
       <Image
         className="group-hover:scale-125 transition-transform object-fill"
+        height={240}
         src={image}
         width={320}
-        height={240}
       />
 
       <h4 className="font-bold mt-4">{name}</h4>

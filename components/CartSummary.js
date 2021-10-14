@@ -43,7 +43,14 @@ const CartSummary = ({}) => {
               </td>
               <td>
                 <Link href={`/product/${item.name}`}>
-                  <a><Image src={item.image} height="48" width="64" alt=""/></a>
+                  <a>
+                    <Image
+                      alt=""
+                      height={48}
+                      src={item.image}
+                      width={64}
+                    />
+                  </a>
                 </Link>
               </td>
               <td>{numberToUSDString(item.price)}</td>

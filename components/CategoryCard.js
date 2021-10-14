@@ -8,7 +8,13 @@ const CategoryCard = ({ category }) => {
   const { name, image } = category
   return (
     <div className="group hover:text-link relative transition-colors">
-      <Image className="object-cover border group-hover:scale-125 transition-transform" src={image} height={700} width={1300} alt="" />
+      <Image
+        alt=""
+        className="object-cover border group-hover:scale-125 transition-transform"
+        height={240}
+        src={image}
+        width={320}
+      />
 
       <h3>{Titlecase(name)}</h3>
       <p aria-hidden="true" className="uppercase">{LINK_TEXT}</p>
