@@ -15,8 +15,12 @@ const Header = () => {
       text: 'Home',
     },
     {
+      href: '/',
+      text: 'Categories',
+    },
+    {
       href: '/shop',
-      text: 'Shop',
+      text: 'All Products',
     },
     {
       href: '/cart',
