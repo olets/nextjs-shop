@@ -2,11 +2,13 @@ import CategoryCard from './CategoryCard'
 
 const CategoryList = ({ categories }) => (
   <ul className="grid grid-cols-3 gap-5">
-    {categories.map((category, index) => (
-      <li key={index}>
-        <CategoryCard category={category} />
-      </li>
-    ))}
+    {
+      categories.sort((a, b) => a.name.localeCompare(b.name)).map((c, index) => (
+        <li key={index}>
+          <CategoryCard category={c} />
+        </li>
+      ))
+    }
   </ul>
 )
 

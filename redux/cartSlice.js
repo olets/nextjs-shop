@@ -12,7 +12,6 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const itemInCart = state.items.find(({ id }) => id === action.payload.id)
 
-
       if (!itemInCart) {
         state.items.push({ ...action.payload, quantity: 1 })
         return
