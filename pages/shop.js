@@ -5,7 +5,7 @@ import ProductList from '../components/ProductList'
 const ShopPage = ({ products }) => {
   return (
     <Layout title="All Products">
-      <ProductList products={products}/>
+      <ProductList products={products.sort((a, b) => a.name.localeCompare(b.name))}/>
     </Layout>
   )
 }
