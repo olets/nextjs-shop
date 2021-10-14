@@ -9,7 +9,7 @@ import {
   updateErrorMessage,
   updateOrderID,
 } from '../redux/cartSlice'
-import { numberToUSDString, numberToUSDNumber } from '../utilities/currency'
+import { numberToUSDNumber } from '../utilities/currency'
 
 const ALLOWED_COUNTRY_CODES = ['US']
 const PAYPAL_OPTIONS = {

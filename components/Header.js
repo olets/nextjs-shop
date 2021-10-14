@@ -2,15 +2,12 @@ import cx from 'classnames'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import { selectTotalQuantity } from '../redux/cartSlice'
 
 const Header = () => {
   const router = useRouter()
-  const { items } = useSelector((state) => state.cart)
-
-  // TODO make an item counter component and use a new selector to get the count
-  const getItemsCount = () => {
-    return items.reduce((accumulator, item) => accumulator + item.quantity, 0);
-  }
+  const cart = useSelector((state) => state.cart)
+  const totalQuantity = selectTotalQuantity(cart)
 
   const headerLinks = [
     {
@@ -23,7 +20,7 @@ const Header = () => {
     },
     {
       href: '/cart',
-      text: `Cart (${getItemsCount()})`,
+      text: `Cart (${totalQuantity})`,
     }
   ]
 
@@ -35,8 +32,8 @@ const Header = () => {
             <li key={href} className={cx({ 'flex-1': index === 0 })}>
               <Link href={href}>
                 <a className={ cx('border-current hover:text-link inline-block m-2 transition-colors', {
-                    'border-b-2': router.asPath === href,
-                  }) }>
+                  'border-b-2': router.asPath === href,
+                }) }>
                   {text}
                 </a>
               </Link>

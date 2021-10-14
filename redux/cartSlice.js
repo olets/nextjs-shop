@@ -13,10 +13,17 @@ export const selectItems = (state) => state.items
 export const selectShippingValue = (state) => state.shippingValue
 export const selectTaxTotalValue = (state) => state.taxTotalValue
 
+export const selectTotalQuantity = createSelector(
+  [selectItems],
+  (items) => items.reduce((acc, cur) => {
+    return acc + cur.quantity
+  }, 0)
+)
+
 export const selectItemTotalValue = createSelector(
   [selectItems],
-  (items) => items.reduce((acc, item) => {
-    return acc + item.quantity * item.price
+  (items) => items.reduce((acc, cur) => {
+    return acc + cur.quantity * cur.price
   }, 0)
 )
 
