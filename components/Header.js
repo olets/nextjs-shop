@@ -13,18 +13,22 @@ const Header = () => {
     {
       href: '/',
       text: 'Home',
+      underlineCurrent: false,
     },
     {
       href: '/',
       text: 'Categories',
+      underlineCurrent: true,
     },
     {
       href: '/shop',
       text: 'All Products',
+      underlineCurrent: true,
     },
     {
       href: '/cart',
       text: `Cart (${totalQuantity})`,
+      underlineCurrent: true,
     }
   ]
 
@@ -32,11 +36,11 @@ const Header = () => {
     <header className="p-4 w-full">
       <nav>
         <ul className="flex justify-between">
-          {headerLinks.map(({ href, text }, index) => (
+          {headerLinks.map(({ href, text, underlineCurrent }, index) => (
             <li key={href} className={cx({ 'flex-1': index === 0 })}>
               <Link href={href}>
                 <a className={ cx('border-current hover:text-link inline-block m-2 transition-colors', {
-                  'border-b-2': router.asPath === href,
+                  'border-b-2': router.asPath === href && underlineCurrent,
                 }) }>
                   {text}
                 </a>
