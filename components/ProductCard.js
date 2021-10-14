@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
-import { numberToUSD } from '../utilities/currency'
+import { numberToUSDString } from '../utilities/currency'
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
         </dd>
         
         <dt>Price:</dt>
-        <dd className="mb-8">{numberToUSD(price)}</dd>
+        <dd className="mb-8">{numberToUSDString(price)}</dd>
       </dl>
 
       <Link href={`/product/${name}`}>

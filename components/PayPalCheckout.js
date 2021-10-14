@@ -5,7 +5,7 @@ import {
   updateErrorMessage,
   updateOrderID,
 } from '../redux/cartSlice'
-import { numberToUSD, USDToNumber } from '../utilities/currency'
+import { numberToUSDString, numberToUSDNumber } from '../utilities/currency'
 
 const ALLOWED_COUNTRY_CODES = ['US']
 const PAYPAL_OPTIONS = {
@@ -35,19 +35,19 @@ const PayPalCheckout = ({}) => {
         description: 'the description',
         amount: {
           currency_code: 'USD',
-          value: USDToNumber(numberToUSD(grandTotalValue)),
+          value: numberToUSDNumber(grandTotalValue),
           breakdown: {
             item_total: {
               currency_code: 'USD',
-              value: USDToNumber(numberToUSD(itemTotalValue)),
+              value: numberToUSDNumber(itemTotalValue),
             },
             shipping: {
               currency_code: 'USD',
-              value: USDToNumber(numberToUSD(shippingValue)),
+              value: numberToUSDNumber(shippingValue),
             },
             tax_total: {
               currency_code: 'USD',
-              value: USDToNumber(numberToUSD(taxTotalValue)),
+              value: numberToUSDNumber(taxTotalValue),
             }
           }
         },

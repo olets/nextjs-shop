@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../components/Layout'
 import { useSelector } from 'react-redux'
-import { numberToUSD } from '../utilities/currency'
+import { numberToUSDString } from '../utilities/currency'
 import UpdateItemQuantityInput from '../components/UpdateItemQuantityInput'
 import IncrementItemQuantityButton from '../components/IncrementItemQuantityButton'
 import DecrementItemQuantityButton from '../components/DecrementItemQuantityButton'
@@ -53,9 +53,9 @@ const CartPage = () => {
                       <a><Image src={item.image} height="48" width="64" alt=""/></a>
                     </Link>
                   </td>
-                  <td>{numberToUSD(item.price)}</td>
+                  <td>{numberToUSDString(item.price)}</td>
                   <td>{item.quantity}</td>
-                  <td>{numberToUSD(item.quantity * item.price)}</td>
+                  <td>{numberToUSDString(item.quantity * item.price)}</td>
                   <td className="space-x-3">
                     <UpdateItemQuantityInput item={item}></UpdateItemQuantityInput>
                     <IncrementItemQuantityButton item={item}></IncrementItemQuantityButton>
@@ -67,10 +67,10 @@ const CartPage = () => {
             </tbody>
           </table>
 
-          <div>Subtotal: {numberToUSD(itemTotalValue)}</div>
-          <div>Shipping: {numberToUSD(shippingValue)}</div>
-          <div>Tax: {numberToUSD(taxTotalValue)}</div>
-          <div>Total: {numberToUSD(grandTotalValue)}</div>
+          <div>Subtotal: {numberToUSDString(itemTotalValue)}</div>
+          <div>Shipping: {numberToUSDString(shippingValue)}</div>
+          <div>Tax: {numberToUSDString(taxTotalValue)}</div>
+          <div>Total: {numberToUSDString(grandTotalValue)}</div>
 
           <Link href="/shop">
             <a className="border-b border-current hover:text-link-hover text-link transition-color">Continue Shopping</a>

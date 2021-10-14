@@ -1,4 +1,4 @@
-export const numberToUSD = (number) => {
+export const numberToUSDString = (number) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -8,6 +8,8 @@ export const numberToUSD = (number) => {
   return formatter.format(number)
 }
 
-export const USDtoNumber = (USD) => {
-  return USD.replace(/^\$/, '').replace(',', '')
+export const numberToUSDNumber = (USD) => {
+  const USDString = numberToUSDString(USD)
+  const USDNumber = USDString.replace(/^\$/, '').replace(',', '')
+  return USDNumber
 }
