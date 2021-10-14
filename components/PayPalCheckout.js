@@ -96,10 +96,10 @@ const PayPalCheckout = ({}) => {
           <dt>Order ID:</dt>
           <dd>{cart.orderID}</dd>
 
-          <dt>On Approve Message: </dt>
+          <dt>Approve Message: </dt>
           <dd>{cart.approveMessage}</dd>
 
-          <dt>On Error Message: </dt>
+          <dt>Error Message: </dt>
           <dd>{cart.errorMessage}</dd>
         </dl>
       </section>
