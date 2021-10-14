@@ -28,7 +28,6 @@ const CartSummary = ({}) => {
             <th className="p-4">Product</th>
             <th className="p-4">Image</th>
             <th className="p-4">Price</th>
-            <th className="p-4">Quantity</th>
             <th className="p-4">Total Price</th>
             <th className="p-4">Quantity Input</th>
             <th className="p-4">Increment</th>
@@ -58,7 +57,6 @@ const CartSummary = ({}) => {
               </td>
               <td>{numberToUSDString(item.price)}</td>
               <td>{numberToUSDString(item.quantity * item.price)}</td>
-              <td>{item.quantity}</td>
               <td>
                 <UpdateItemQuantityInput item={item}></UpdateItemQuantityInput>
               </td>

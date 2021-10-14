@@ -15,7 +15,7 @@ const UpdateItemQuantityInput = ({ item }) => {
       onChange={(e) => {
         const { value } = e.target
 
-        if (value === 0) {
+        if (value < 1) {
           // TODO would be nice to warn
           dispatch(removeFromCart(item.id))
           return
