@@ -35,19 +35,19 @@ const PayPalCheckout = ({}) => {
         description: 'the description',
         amount: {
           currency_code: 'USD',
-          value: numberToUSD.format(grandTotalValue).replace(/^\$/, '').replace(',', ''),
+          value: numberToUSD(grandTotalValue).replace(/^\$/, '').replace(',', ''),
           breakdown: {
             item_total: {
               currency_code: 'USD',
-              value: numberToUSD.format(itemTotalValue).replace(/^\$/, '').replace(',', ''),
+              value: numberToUSD(itemTotalValue).replace(/^\$/, '').replace(',', ''),
             },
             shipping: {
               currency_code: 'USD',
-              value: numberToUSD.format(shippingValue).replace(/^\$/, '').replace(',', ''),
+              value: numberToUSD(shippingValue).replace(/^\$/, '').replace(',', ''),
             },
             tax_total: {
               currency_code: 'USD',
-              value: numberToUSD.format(taxTotalValue).replace(/^\$/, '').replace(',', ''),
+              value: numberToUSD(taxTotalValue).replace(/^\$/, '').replace(',', ''),
             }
           }
         },

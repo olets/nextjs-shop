@@ -53,9 +53,9 @@ const CartPage = () => {
                       <a><Image src={item.image} height="48" width="64" alt=""/></a>
                     </Link>
                   </td>
-                  <td>{numberToUSD.format(item.price)}</td>
+                  <td>{numberToUSD(item.price)}</td>
                   <td>{item.quantity}</td>
-                  <td>{numberToUSD.format(item.quantity * item.price)}</td>
+                  <td>{numberToUSD(item.quantity * item.price)}</td>
                   <td className="space-x-3">
                     <UpdateItemQuantityInput item={item}></UpdateItemQuantityInput>
                     <IncrementItemQuantityButton item={item}></IncrementItemQuantityButton>
@@ -67,10 +67,10 @@ const CartPage = () => {
             </tbody>
           </table>
 
-          <div>Subtotal: {numberToUSD.format(itemTotalValue)}</div>
-          <div>Shipping: {numberToUSD.format(shippingValue)}</div>
-          <div>Tax: {numberToUSD.format(taxTotalValue)}</div>
-          <div>Total: {numberToUSD.format(grandTotalValue)}</div>
+          <div>Subtotal: {numberToUSD(itemTotalValue)}</div>
+          <div>Shipping: {numberToUSD(shippingValue)}</div>
+          <div>Tax: {numberToUSD(taxTotalValue)}</div>
+          <div>Total: {numberToUSD(grandTotalValue)}</div>
 
           <Link href="/shop">
             <a className="border-b border-current hover:text-link-hover text-link transition-color">Continue Shopping</a>
