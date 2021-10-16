@@ -98,7 +98,7 @@ const cartSlice = createSlice({
         return
       }
 
-      itemInCart.quantity = action.payload.quantity
+      itemInCart.quantity = Number(action.payload.quantity)
     },
     updateApproveMessage: (state, action) => {
       state.approveMessage = action.payload
